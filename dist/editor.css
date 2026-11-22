@@ -1143,3 +1143,11 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-devbtn svg { width: 18px; height: 18px; }
 /* The container section tag would cover the page header when the section starts at the top: keep just its outline. */
 .ve-ui .ve-box-parent.is-top .ve-box-ptag { display: none; }
+
+/* ET demo polish 2: name tags never cover what they label; preview fills the window. */
+.ve-ui .ve-box-sel.is-top:not(.is-section) .ve-box-bar { top: calc(100% + 4px); left: 0; }
+.ve-ui .ve-box-parent.is-small .ve-box-ptag { display: none; }
+.ve-ui .ve-box-parent.is-section.is-tag-bottom .ve-box-ptag { top: auto; bottom: 8px; }
+.ve-ui .ve-devslot-card { display: inline-flex; align-items: center; justify-self: end; }
+.ve-ui .ve-stage.is-preview .ve-card, .ve-ui .ve-stage.is-preview .ve-card-body { border: 0; }
+.ve-ui .ve-stage.is-preview .ve-card-body { margin: 0; border-radius: 0; box-shadow: none; }
