@@ -1141,3 +1141,5 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-device-seg { gap: 4px; align-items: center; }
 .ve-ui .ve-devbtn { width: 30px; height: 28px; border-radius: 6px; }
 .ve-ui .ve-devbtn svg { width: 18px; height: 18px; }
+/* The container section tag would cover the page header when the section starts at the top: keep just its outline. */
+.ve-ui .ve-box-parent.is-top .ve-box-ptag { display: none; }
