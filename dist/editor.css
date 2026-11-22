@@ -1143,11 +1143,78 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-devbtn svg { width: 18px; height: 18px; }
 /* The container section tag would cover the page header when the section starts at the top: keep just its outline. */
 .ve-ui .ve-box-parent.is-top .ve-box-ptag { display: none; }
-
-/* ET demo polish 2: name tags never cover what they label; preview fills the window. */
 .ve-ui .ve-box-sel.is-top:not(.is-section) .ve-box-bar { top: calc(100% + 4px); left: 0; }
 .ve-ui .ve-box-parent.is-small .ve-box-ptag { display: none; }
 .ve-ui .ve-box-parent.is-section.is-tag-bottom .ve-box-ptag { top: auto; bottom: 8px; }
 .ve-ui .ve-devslot-card { display: inline-flex; align-items: center; justify-self: end; }
 .ve-ui .ve-stage.is-preview .ve-card, .ve-ui .ve-stage.is-preview .ve-card-body { border: 0; }
 .ve-ui .ve-stage.is-preview .ve-card-body { margin: 0; border-radius: 0; box-shadow: none; }
+
+/* Brand mark as a square (logoStyle: 'box'). */
+.ve-ui .ve-logo.is-box { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 3px; background: #ed1c24; color: #fff;
+  font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 17px; letter-spacing: -.5px; line-height: 1; }
+.ve-ui .ve-previewbar .ve-logo.is-box { width: 26px; height: 26px; font-size: 15px; }
+.ve-ui .ve-sitename { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle; }
+
+/* Status pill in the top bar. */
+.ve-ui .ve-status { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; margin: 0 4px; border: 0; border-radius: 13px; cursor: pointer;
+  font: 500 12px/1 var(--ve-font-stack); background: #eef0f4; color: #3b4152; white-space: nowrap; }
+.ve-ui .ve-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #8a90a0; flex: none; }
+.ve-ui [data-state="draft"] { background: #eef0f4; } .ve-ui [data-state="draft"] .ve-status-dot { background: #8a90a0; }
+.ve-ui [data-state="pending"] { background: #fff4dc; color: #8a5a00; } .ve-ui [data-state="pending"] .ve-status-dot { background: #f0a500; }
+.ve-ui [data-state="approved"] { background: #e3f6ea; color: #17733b; } .ve-ui [data-state="approved"] .ve-status-dot { background: #22a356; }
+.ve-ui [data-state="changes"] { background: #fde8e8; color: #b42323; } .ve-ui [data-state="changes"] .ve-status-dot { background: #df3131; }
+.ve-ui .ve-publish.is-pending { background: #fff4dc; color: #8a5a00; box-shadow: inset 0 0 0 1px #f3d48f; }
+
+/* Modal. */
+.ve-ui .ve-modal-scrim { position: fixed; inset: 0; z-index: calc(var(--ve-z) + 1); background: rgba(19, 23, 32, .42); display: grid; place-items: center; padding: 16px; pointer-events: auto; }
+.ve-ui .ve-modal { width: min(640px, 100%); max-height: min(86vh, 760px); display: flex; flex-direction: column; background: #fff; border-radius: 12px; box-shadow: 0 24px 64px rgba(0, 6, 36, .28); overflow: hidden; }
+.ve-ui .ve-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 12px; border-bottom: 1px solid #eceef2; }
+.ve-ui .ve-modal-head strong { font: 600 17px/1.3 var(--ve-font-display, var(--ve-font-stack)); }
+.ve-ui .ve-modal-body { padding: 14px 20px; overflow: auto; flex: 1; }
+.ve-ui .ve-modal-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 20px 16px; border-top: 1px solid #eceef2; }
+.ve-ui .ve-modal-foot .ve-btn { height: 34px; padding: 0 16px; border-radius: 17px; }
+
+/* Review sheet. */
+.ve-ui .ve-appr-intro { margin: 0 0 10px; color: var(--ve-dim); font-size: 13px; line-height: 1.5; }
+.ve-ui .ve-appr-page { display: flex; align-items: center; gap: 6px; padding: 8px 10px; margin-bottom: 12px; background: #f6f7f9; border-radius: 8px; font-size: 12.5px; min-width: 0; }
+.ve-ui .ve-appr-page > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ve-ui .ve-appr-page svg { width: 15px; height: 15px; flex: none; }
+.ve-ui .ve-appr-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ve-ui .ve-appr-row { border: 1px solid #e4e7ee; border-radius: 10px; padding: 10px 12px; }
+.ve-ui .ve-appr-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; min-width: 0; }
+.ve-ui .ve-appr-head strong { font-size: 13px; font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ve-ui .ve-appr-n { width: 20px; height: 20px; border-radius: 50%; background: var(--ve-accent); color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 600; flex: none; }
+.ve-ui .ve-appr-kind { font-size: 11px; color: var(--ve-dim); background: #f1f3f7; border-radius: 10px; padding: 2px 8px; flex: none; }
+.ve-ui .ve-appr-diff { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: stretch; }
+.ve-ui .ve-appr-old, .ve-ui .ve-appr-new { border-radius: 8px; padding: 6px 9px; font-size: 12.5px; line-height: 1.45; min-width: 0; overflow-wrap: anywhere; }
+.ve-ui .ve-appr-old { background: #fbf1f1; color: #6d3a3a; text-decoration: line-through; text-decoration-color: rgba(180, 35, 35, .35); }
+.ve-ui .ve-appr-new { background: #eef8f1; color: #1d5130; }
+.ve-ui .ve-appr-old small, .ve-ui .ve-appr-new small { display: block; text-decoration: none; font-size: 10.5px; text-transform: uppercase; letter-spacing: .4px; opacity: .7; margin-bottom: 2px; }
+.ve-ui .ve-appr-old img, .ve-ui .ve-appr-new img { display: block; max-width: 100%; max-height: 90px; border-radius: 4px; object-fit: cover; }
+.ve-ui .ve-appr-arrow { align-self: center; color: var(--ve-dim); }
+.ve-ui .ve-appr-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15); }
+.ve-ui .ve-appr-note { width: 100%; margin-top: 12px; box-sizing: border-box; resize: vertical; min-height: 54px; padding: 8px 10px; font: 13px/1.4 var(--ve-font-stack); border: 1px solid #d5d9e2; border-radius: 8px; }
+.ve-ui .ve-appr-empty { color: var(--ve-dim); font-size: 13px; }
+.ve-ui .ve-appr-ok { display: grid; place-items: center; width: 52px; height: 52px; margin: 6px auto 12px; border-radius: 50%; background: #e3f6ea; color: #17733b; }
+.ve-ui .ve-appr-ok svg { width: 28px; height: 28px; }
+
+/* Timeline (in the done dialog and the status card). */
+.ve-ui .ve-appr-steps { list-style: none; margin: 10px 0 4px; padding: 0; display: grid; gap: 0; }
+.ve-ui .ve-appr-steps li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; position: relative; padding-bottom: 12px; color: var(--ve-dim); }
+.ve-ui .ve-appr-steps li:not(:last-child)::after { content: ''; position: absolute; left: 6px; top: 16px; bottom: 0; width: 2px; background: #e4e7ee; }
+.ve-ui .ve-appr-steps li > i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #c9ced8; background: #fff; box-sizing: border-box; margin-top: 2px; }
+.ve-ui .ve-appr-steps li.is-on { color: var(--ve-fg); }
+.ve-ui .ve-appr-steps li.is-on > i { border-color: var(--ve-accent); background: var(--ve-accent); }
+.ve-ui .ve-appr-steps strong { display: block; font-size: 13px; font-weight: 600; }
+.ve-ui .ve-appr-steps small { display: block; font-size: 12px; color: var(--ve-dim); margin-top: 1px; }
+
+/* Status card. */
+.ve-ui .ve-appr-pop { width: 320px; }
+.ve-ui .ve-appr-card { padding: 14px; display: grid; gap: 6px; }
+.ve-ui .ve-appr-card > p { margin: 0; font-size: 12.5px; line-height: 1.45; }
+.ve-ui .ve-appr-cardhead { display: inline-flex; align-items: center; gap: 7px; justify-self: start; padding: 4px 10px; border-radius: 13px; font-size: 12.5px; }
+.ve-ui .ve-appr-card .ve-btn { height: 32px; border-radius: 16px; justify-self: start; padding: 0 14px; }
+.ve-ui .ve-appr-demo { margin-top: 6px; padding-top: 10px; border-top: 1px dashed #dfe3ea; display: grid; gap: 8px; }
+.ve-ui .ve-appr-demo small { color: var(--ve-dim); font-size: 11.5px; }
+.ve-ui .ve-appr-demo > div { display: flex; gap: 8px; }
