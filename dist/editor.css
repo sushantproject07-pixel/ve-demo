@@ -1243,28 +1243,61 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-levelopt-check { color: var(--ve-accent); font-weight: 700; padding-top: 6px; }
 .ve-ui .ve-levelpop-foot { margin: 6px 8px 2px; font-size: 12px; color: var(--ve-dim); }
 
-/* Welcome chooser. */
-.ve-ui .ve-welcome-scrim { background: rgba(19, 23, 32, .5); }
-.ve-ui .ve-welcome { width: min(860px, 100%); max-height: min(92vh, 720px); padding: 28px 28px 30px; overflow: auto; }
-.ve-ui .ve-welcome[data-count="2"] { width: min(620px, 100%); }
-.ve-ui .ve-welcome-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; margin-bottom: 22px; }
-.ve-ui .ve-welcome-head .ve-logo { margin-bottom: 4px; }
-.ve-ui .ve-welcome-head .ve-logo.is-box { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; color: #fff; font-size: 17px; }
-.ve-ui .ve-welcome-head strong { font: 700 22px/1.25 var(--ve-font-display, var(--ve-font-stack)); letter-spacing: -.01em; }
-.ve-ui .ve-welcome-head p { margin: 0; max-width: 520px; color: var(--ve-dim); font-size: 14px; line-height: 1.45; }
-.ve-ui .ve-welcome-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
-.ve-ui .ve-wcard { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 20px 18px 16px; border: 1px solid #dfe3ea; border-radius: 12px; background: #fff; text-align: left; cursor: pointer; transition: border-color .12s, box-shadow .12s, transform .12s; }
-.ve-ui .ve-wcard:hover, .ve-ui .ve-wcard:focus-visible { border-color: var(--ve-accent); box-shadow: 0 6px 20px rgba(47, 93, 255, .16); outline: none; transform: translateY(-1px); }
-.ve-ui .ve-wcard-tag { position: absolute; top: -10px; left: 16px; padding: 2px 10px; border-radius: 10px; background: #2fb36d; color: #fff; font-size: 11.5px; font-weight: 600; }
-.ve-ui .ve-wcard-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: #e9f7ef; color: #1f8a52; margin-bottom: 6px; }
-.ve-ui .ve-wcard[data-level="smart"] .ve-wcard-ic { background: var(--ve-accent-soft); color: var(--ve-accent); }
-.ve-ui .ve-wcard[data-level="developer"] .ve-wcard-ic { background: #f1eafe; color: #6a2fe0; }
-.ve-ui .ve-wcard-ic svg { width: 22px; height: 22px; }
-.ve-ui .ve-wcard-title { font: 700 17px/1.25 var(--ve-font-display, var(--ve-font-stack)); }
-.ve-ui .ve-wcard-level { font-size: 12px; font-weight: 600; color: var(--ve-dim); text-transform: uppercase; letter-spacing: .06em; }
-.ve-ui .ve-wcard-list { margin: 8px 0 12px; padding: 0 0 0 18px; color: #3b4150; font-size: 13.5px; line-height: 1.5; }
-.ve-ui .ve-wcard-go { margin-top: auto; display: inline-flex; align-items: center; gap: 4px; color: var(--ve-accent); font-weight: 600; font-size: 14px; }
-.ve-ui .ve-wcard-go svg { width: 16px; height: 16px; }
+/* Welcome chooser, in the language of Wix's modals (Add Section): title top left, round close, grey-framed preview cards, colour only where the editor's blue marks the action. */
+.ve-ui .ve-welcome-scrim { background: rgba(22, 45, 61, .66); }
+.ve-ui .ve-welcome { width: min(940px, 100%); max-height: min(92vh, 640px); border-radius: 12px; padding: 0 24px 28px; overflow: auto; box-shadow: 0 8px 40px rgba(0, 6, 36, .3); }
+.ve-ui .ve-welcome[data-count="2"] { width: min(660px, 100%); }
+.ve-ui .ve-welcome-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0 4px; }
+.ve-ui .ve-welcome-head strong { font: 500 20px/28px var(--ve-font-display, var(--ve-font-stack)); color: #000; letter-spacing: 0; }
+.ve-ui .ve-welcome-x { width: 32px; height: 32px; flex: none; }
+.ve-ui .ve-welcome-x svg { width: 18px; height: 18px; }
+.ve-ui .ve-welcome-sub { margin: 0 0 22px; font-size: 14px; line-height: 20px; color: #5e6475; }
+.ve-ui .ve-welcome-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.ve-ui .ve-wcard { display: flex; flex-direction: column; gap: 0; padding: 6px; border: 0; border-radius: 8px; background: #f4f4f4; text-align: left; cursor: pointer; box-shadow: inset 0 0 0 1px transparent; transition: box-shadow .12s; }
+.ve-ui .ve-wcard:hover, .ve-ui .ve-wcard:focus-visible { box-shadow: inset 0 0 0 2px var(--ve-accent); outline: none; }
+.ve-ui .ve-wcard-txt { display: flex; flex-direction: column; gap: 4px; padding: 12px 8px 8px; }
+.ve-ui .ve-wcard-title { display: flex; align-items: baseline; gap: 8px; font: 500 16px/22px var(--ve-font-display, var(--ve-font-stack)); color: #000; }
+.ve-ui .ve-wcard-level { font: 400 13px/18px var(--ve-font-stack); color: #868aa5; }
+.ve-ui .ve-wcard-desc { font-size: 13px; line-height: 18px; color: #5e6475; }
+
+/* Card previews: a sketched page on white. */
+.ve-ui .ve-wprev { position: relative; display: block; height: 176px; border-radius: 4px; background: #fff; overflow: hidden; box-shadow: 0 0 0 1px rgba(0, 0, 0, .04); }
+.ve-ui .ve-wprev i, .ve-ui .ve-wprev span { position: absolute; display: block; }
+.ve-ui .ve-wprev .p-bar { left: 0; right: 0; top: 0; height: 14px; background: #ececec; }
+.ve-ui .ve-wprev .p-line { left: 22px; width: 60%; height: 6px; border-radius: 3px; background: #e3e3e3; }
+.ve-ui .ve-wprev .p-line.is-short { width: 38%; }
+.ve-ui .ve-wprev .p-sel { left: 16px; top: 32px; width: 68%; height: 26px; border: 1.5px solid var(--ve-accent); border-radius: 2px; }
+.ve-ui .ve-wprev .p-h1 { left: 6px; top: 6px; right: 18%; height: 11px; border-radius: 3px; background: #3b3f4a; }
+.ve-ui .ve-wprev .p-chip { display: flex !important; align-items: center; gap: 4px; left: 16px; top: 64px; height: 20px; padding: 0 8px 0 5px; border-radius: 4px; background: var(--ve-accent); color: #fff; font: 600 10px/1 var(--ve-font-stack); }
+.ve-ui .ve-wprev .p-chip svg { width: 11px; height: 11px; }
+.ve-ui .ve-wprev.is-basic .p-line { top: 98px; }
+.ve-ui .ve-wprev.is-basic .p-line.is-short { top: 110px; }
+.ve-ui .ve-wprev .p-img { display: grid !important; place-items: center; right: 16px; bottom: 14px; width: 72px; height: 46px; border-radius: 3px; background: #e9e9e9; color: #8a8f9c; }
+.ve-ui .ve-wprev .p-img svg { width: 16px; height: 16px; }
+.ve-ui .ve-wprev.is-basic .p-img { left: 22px; right: auto; top: 124px; bottom: auto; width: 96px; height: 40px; }
+.ve-ui .ve-wprev .p-block { left: 16px; right: 16px; top: 28px; height: 76px; border-radius: 3px; background: #f3f3f3; outline: 1.5px solid var(--ve-accent); }
+.ve-ui .ve-wprev .p-h2 { left: 14px; top: 16px; width: 46%; height: 10px; border-radius: 3px; background: #3b3f4a; }
+.ve-ui .ve-wprev .p-block .p-line { left: 14px; top: 34px; width: 62%; }
+.ve-ui .ve-wprev .p-pad { left: 0; right: 0; bottom: 0; height: 12px; background: repeating-linear-gradient(135deg, rgba(47, 93, 255, .18) 0 3px, transparent 3px 7px); }
+.ve-ui .ve-wprev .p-swatches { display: flex !important; gap: 5px; right: 24px; top: 40px; }
+.ve-ui .ve-wprev .p-swatches i { position: static; width: 14px; height: 14px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .08); }
+.ve-ui .ve-wprev .p-swatches .is-a { background: var(--ve-accent); }
+.ve-ui .ve-wprev .p-swatches .is-b { background: #3b3f4a; }
+.ve-ui .ve-wprev .p-swatches .is-c { background: #d9d9d9; }
+.ve-ui .ve-wprev .p-move { display: flex !important; flex-direction: column; left: -1px; top: 40px; padding: 3px; border-radius: 0 4px 4px 0; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .18); color: #3b3f4a; }
+.ve-ui .ve-wprev .p-move svg { width: 11px; height: 11px; }
+.ve-ui .ve-wprev .p-block2 { left: 16px; right: 16px; top: 116px; height: 46px; border-radius: 3px; background: #ededed; }
+.ve-ui .ve-wprev .p-page { left: 0; top: 0; bottom: 0; width: 56%; }
+.ve-ui .ve-wprev .p-page .p-sel { left: 12px; width: 80%; }
+.ve-ui .ve-wprev .p-page .p-line { left: 14px; top: 72px; width: 70%; }
+.ve-ui .ve-wprev .p-page .p-line.is-short { top: 84px; width: 46%; }
+.ve-ui .ve-wprev .p-code { right: 0; top: 0; bottom: 0; width: 44%; background: #1f2330; padding: 0; }
+.ve-ui .ve-wprev .p-code b { position: absolute; left: 12px; top: 12px; font: 600 11px/1 ui-monospace, Menlo, Consolas, monospace; color: #8fa6ff; }
+.ve-ui .ve-wprev .p-code i { left: 12px; height: 5px; border-radius: 3px; background: #4a5068; }
+.ve-ui .ve-wprev .p-code .c1 { top: 36px; width: 60%; }
+.ve-ui .ve-wprev .p-code .c2 { top: 48px; width: 44%; left: 22px; background: #6f86e8; }
+.ve-ui .ve-wprev .p-code .c3 { top: 60px; width: 52%; left: 22px; }
+.ve-ui .ve-wprev .p-code .c4 { top: 72px; width: 30%; }
 
 /* Basic floatbar: labelled primary action. */
 .ve-ui .ve-fbtn.is-primary.has-label { width: auto; padding: 0 12px 0 8px; gap: 6px; background: var(--ve-accent); color: #fff; border-radius: 6px; }
