@@ -1326,21 +1326,27 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-sidecard[data-card="image-replace"] .ve-bigbtn { margin-bottom: 14px; }
 .ve-ui .ve-sidecard[data-card="image-replace"] .ve-tlabel { display: block; margin-bottom: 6px; }
 
-/* Brand panel: apply the page's colours and fonts to the selection. */
-.ve-ui .ve-brandpop { width: 320px; }
-.ve-ui .ve-brand-for { margin: 0 0 12px; font-size: 13px; line-height: 18px; color: #3b4150; }
-.ve-ui .ve-brand-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-.ve-ui .ve-brand-row .ve-pop-sub { margin: 0; }
-.ve-ui .ve-brandseg { display: inline-flex; height: 28px; }
-.ve-ui .ve-brandseg .ve-tseg-btn { width: auto; padding: 0 10px; font-size: 12px; font-weight: 500; }
-.ve-ui .ve-brandpop .ve-brandgrid { grid-template-columns: repeat(8, 1fr); gap: 8px; margin-bottom: 14px; }
-.ve-ui .ve-brandpop .ve-sw { width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12); cursor: pointer; transition: transform .1s; }
-.ve-ui .ve-brandpop .ve-sw:hover { transform: scale(1.12); }
-.ve-ui .ve-brandpop .ve-sw.is-on { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ve-accent); }
-.ve-ui .ve-brandfonts { display: flex; flex-direction: column; gap: 4px; }
-.ve-ui .ve-brandfont { display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40px; padding: 0 12px; border: 1px solid #e6e8ec; border-radius: 8px; background: #fff; font-size: 16px; text-align: left; cursor: pointer; overflow: hidden; }
-.ve-ui .ve-brandfont span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ve-ui .ve-brandfont:hover:not(:disabled) { border-color: var(--ve-accent); }
-.ve-ui .ve-brandfont.is-on { border-color: var(--ve-accent); background: var(--ve-accent-soft); }
+/* Brand panel: apply the page's colours and fonts to the selection. Same scale as the editor's colour card. */
+.ve-ui .ve-brandpop { width: 288px; max-height: calc(100vh - 72px); overflow: auto; }
+.ve-ui .ve-brandpop .ve-pop-head { padding: 12px 10px 6px 16px; }
+.ve-ui .ve-brandpop .ve-pop-head strong { font: 600 14px/20px var(--ve-font-display); color: #151414; }
+.ve-ui .ve-brandpop .ve-pop-body { padding: 0 16px 14px; }
+.ve-ui .ve-brand-for { margin: 0 0 10px; font-size: 12px; line-height: 17px; color: #5e6475; }
+.ve-ui .ve-brand-row { display: block; margin: 0 0 8px; }
+.ve-ui .ve-brand-row .ve-pop-sub { margin: 0 0 6px; font-size: 12px; color: #5e6475; }
+.ve-ui .ve-brandpop .ve-pop-sub { font-size: 12px; color: #5e6475; margin: 4px 0 6px; }
+.ve-ui .ve-brandseg { display: flex; width: 100%; height: 28px; padding: 2px; border-radius: 6px; background: #f0f1f4; box-sizing: border-box; }
+.ve-ui .ve-brandseg .ve-tseg-btn { flex: 1; width: auto; min-width: 0; height: 24px; padding: 0 8px; border-radius: 4px; font: 500 12px/24px var(--ve-font-stack); color: #3b4150; }
+.ve-ui .ve-brandseg .ve-tseg-btn.is-on { background: #fff; color: var(--ve-accent); box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+.ve-ui .ve-brandseg .ve-tseg-btn:disabled { opacity: .5; }
+.ve-ui .ve-brandpop .ve-brandgrid { display: grid; grid-template-columns: repeat(8, 24px); justify-content: space-between; gap: 8px 0; margin: 0 0 12px; }
+.ve-ui .ve-brandpop .ve-sw { width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .14); cursor: pointer; }
+.ve-ui .ve-brandpop .ve-sw:hover { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .14), 0 0 0 2px #fff, 0 0 0 3px #b8c4ff; }
+.ve-ui .ve-brandpop .ve-sw.is-on { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .14), 0 0 0 2px #fff, 0 0 0 3.5px var(--ve-accent); }
+.ve-ui .ve-brandfonts { display: flex; flex-direction: column; margin: 0 -8px; }
+.ve-ui .ve-brandfont { display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 32px; padding: 0 8px; border: 0; border-radius: 6px; background: transparent; text-align: left; cursor: pointer; }
+.ve-ui .ve-brandfont span:first-child { font-size: 15px !important; font-weight: 400 !important; line-height: 32px; color: #151414; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ve-ui .ve-brandfont:hover:not(:disabled) { background: #f2f4f7; }
+.ve-ui .ve-brandfont.is-on { background: var(--ve-accent-soft); }
 .ve-ui .ve-brandfont:disabled { opacity: .45; cursor: default; }
-.ve-ui .ve-brandfont-check { color: var(--ve-accent); font-weight: 700; }
+.ve-ui .ve-brandfont-check { color: var(--ve-accent); font-size: 13px; font-weight: 700; }
