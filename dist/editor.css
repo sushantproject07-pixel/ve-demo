@@ -1218,3 +1218,73 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-appr-demo { margin-top: 6px; padding-top: 10px; border-top: 1px dashed #dfe3ea; display: grid; gap: 8px; }
 .ve-ui .ve-appr-demo small { color: var(--ve-dim); font-size: 11.5px; }
 .ve-ui .ve-appr-demo > div { display: flex; gap: 8px; }
+
+/* Editing levels: mode switcher, welcome chooser, basic floatbar labels, developer Code panel. */
+
+/* Switcher in the top bar: a coloured dot + level name, like Wix's site/role pills. */
+.ve-ui .ve-levelbtn { gap: 6px; margin-left: 2px; padding: 0 10px; border: 1px solid #dfe3ea; background: #fff; height: 30px; border-radius: 15px; font-weight: 600; font-size: 13px; }
+.ve-ui .ve-levelbtn:hover { background: #fff; border-color: #c4cad6; }
+.ve-ui .ve-level-dot { width: 8px; height: 8px; border-radius: 50%; background: #2fb36d; flex: none; }
+.ve-ui .ve-levelbtn[data-level="smart"] .ve-level-dot { background: var(--ve-accent); }
+.ve-ui .ve-levelbtn[data-level="developer"] .ve-level-dot { background: #7a3cf0; }
+
+.ve-ui .ve-pop-level { padding: 0; }
+.ve-ui .ve-levelpop { width: 320px; padding: 12px 8px 8px; }
+.ve-ui .ve-levelpop .ve-tpop-title { padding: 0 8px 8px; }
+.ve-ui .ve-levelopt { display: flex; align-items: flex-start; gap: 10px; width: 100%; padding: 10px 8px; border: 0; border-radius: 8px; background: transparent; text-align: left; cursor: pointer; }
+.ve-ui .ve-levelopt:hover { background: var(--ve-hover); }
+.ve-ui .ve-levelopt.is-on { background: var(--ve-accent-soft); }
+.ve-ui .ve-levelopt-ic { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: #f2f4f7; color: var(--ve-fg); }
+.ve-ui .ve-levelopt.is-on .ve-levelopt-ic { background: #fff; color: var(--ve-accent); }
+.ve-ui .ve-levelopt-ic svg { width: 18px; height: 18px; }
+.ve-ui .ve-levelopt-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.ve-ui .ve-levelopt-txt strong { font-size: 14px; font-weight: 600; }
+.ve-ui .ve-levelopt-txt small { font-size: 12.5px; color: var(--ve-dim); line-height: 1.35; }
+.ve-ui .ve-levelopt-check { color: var(--ve-accent); font-weight: 700; padding-top: 6px; }
+.ve-ui .ve-levelpop-foot { margin: 6px 8px 2px; font-size: 12px; color: var(--ve-dim); }
+
+/* Welcome chooser. */
+.ve-ui .ve-welcome-scrim { background: rgba(19, 23, 32, .5); }
+.ve-ui .ve-welcome { width: min(860px, 100%); max-height: min(92vh, 720px); padding: 28px 28px 30px; overflow: auto; }
+.ve-ui .ve-welcome[data-count="2"] { width: min(620px, 100%); }
+.ve-ui .ve-welcome-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; margin-bottom: 22px; }
+.ve-ui .ve-welcome-head .ve-logo { margin-bottom: 4px; }
+.ve-ui .ve-welcome-head .ve-logo.is-box { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; color: #fff; font-size: 17px; }
+.ve-ui .ve-welcome-head strong { font: 700 22px/1.25 var(--ve-font-display, var(--ve-font-stack)); letter-spacing: -.01em; }
+.ve-ui .ve-welcome-head p { margin: 0; max-width: 520px; color: var(--ve-dim); font-size: 14px; line-height: 1.45; }
+.ve-ui .ve-welcome-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.ve-ui .ve-wcard { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 20px 18px 16px; border: 1px solid #dfe3ea; border-radius: 12px; background: #fff; text-align: left; cursor: pointer; transition: border-color .12s, box-shadow .12s, transform .12s; }
+.ve-ui .ve-wcard:hover, .ve-ui .ve-wcard:focus-visible { border-color: var(--ve-accent); box-shadow: 0 6px 20px rgba(47, 93, 255, .16); outline: none; transform: translateY(-1px); }
+.ve-ui .ve-wcard-tag { position: absolute; top: -10px; left: 16px; padding: 2px 10px; border-radius: 10px; background: #2fb36d; color: #fff; font-size: 11.5px; font-weight: 600; }
+.ve-ui .ve-wcard-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: #e9f7ef; color: #1f8a52; margin-bottom: 6px; }
+.ve-ui .ve-wcard[data-level="smart"] .ve-wcard-ic { background: var(--ve-accent-soft); color: var(--ve-accent); }
+.ve-ui .ve-wcard[data-level="developer"] .ve-wcard-ic { background: #f1eafe; color: #6a2fe0; }
+.ve-ui .ve-wcard-ic svg { width: 22px; height: 22px; }
+.ve-ui .ve-wcard-title { font: 700 17px/1.25 var(--ve-font-display, var(--ve-font-stack)); }
+.ve-ui .ve-wcard-level { font-size: 12px; font-weight: 600; color: var(--ve-dim); text-transform: uppercase; letter-spacing: .06em; }
+.ve-ui .ve-wcard-list { margin: 8px 0 12px; padding: 0 0 0 18px; color: #3b4150; font-size: 13.5px; line-height: 1.5; }
+.ve-ui .ve-wcard-go { margin-top: auto; display: inline-flex; align-items: center; gap: 4px; color: var(--ve-accent); font-weight: 600; font-size: 14px; }
+.ve-ui .ve-wcard-go svg { width: 16px; height: 16px; }
+
+/* Basic floatbar: labelled primary action. */
+.ve-ui .ve-fbtn.is-primary.has-label { width: auto; padding: 0 12px 0 8px; gap: 6px; background: var(--ve-accent); color: #fff; border-radius: 6px; }
+.ve-ui .ve-fbtn.is-primary.has-label:hover { background: var(--ve-accent-2); color: #fff; }
+.ve-ui .ve-fbtn.has-label span { font-size: 13px; font-weight: 600; white-space: nowrap; }
+
+/* Developer Code panel. */
+.ve-ui .ve-codebody { display: flex; flex-direction: column; gap: 4px; padding: 4px 16px 20px; }
+.ve-ui .ve-codesec { padding: 10px 0; border-bottom: 1px solid #eceef2; }
+.ve-ui .ve-codesec:last-child { border-bottom: 0; }
+.ve-ui .ve-codesec .ve-sec-title { margin: 0 0 8px; }
+.ve-ui .ve-codetag code { display: block; padding: 8px 10px; border-radius: 6px; background: #131720; color: #d7e2ff; font: 12.5px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-all; }
+.ve-ui .ve-code { margin: 6px 0 8px; max-height: 200px; overflow: auto; padding: 8px 10px; border-radius: 6px; background: #f5f6f8; border: 1px solid #e6e8ee; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; color: #22262f; }
+.ve-ui .ve-code-tall { max-height: 320px; }
+.ve-ui .ve-kv-wide { flex-wrap: wrap; gap: 6px; }
+.ve-ui .ve-kv-wide code { flex: 1 1 100%; word-break: break-all; font-size: 12px; }
+.ve-ui .ve-codearea { width: 100%; margin: 6px 0 8px; padding: 8px 10px; border: 1px solid #dfe3ea; border-radius: 6px; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; resize: vertical; }
+.ve-ui .ve-codearea:focus { outline: none; border-color: var(--ve-accent); box-shadow: 0 0 0 3px var(--ve-accent-soft); }
+.ve-ui .ve-codebtn { height: 28px; padding: 0 12px; border-radius: 14px; font-size: 13px; }
+.ve-ui .ve-drawer[data-panel="code"] { width: 340px; }
+
+/* Basic level: the selection shows no Add Section button and no resize grips. */
+.ve-ui .ve-box-sel.is-basic .ve-addsec, .ve-ui .ve-box-sel.is-basic .ve-box-handles { display: none !important; }
