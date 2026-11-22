@@ -1363,3 +1363,8 @@ html.ve-editing [data-ve-paused], html.ve-editing [data-ve-paused] * { animation
 /* Labelled secondary action in the float bar ("Open panel" on accordions, tabs, menus). */
 .ve-ui .ve-floatbar .ve-fbtn.has-label:not(.is-primary) { width: auto; padding: 0 10px 0 6px; gap: 6px; color: var(--ve-accent); }
 .ve-ui .ve-floatbar .ve-fbtn.has-label:not(.is-primary):hover { background: var(--ve-accent-soft, rgba(47, 93, 255, .08)); color: var(--ve-accent); }
+/* Change Video card */
+.ve-ui .ve-tcard[data-video] > * + * { margin-top: 10px; }
+.ve-ui .ve-tcard[data-video] .ve-check { display: flex; align-items: center; gap: 8px; }
+.ve-ui .ve-vprev { display: grid; place-items: center; min-height: 90px; background: #f2f3f5; border-radius: 8px; overflow: hidden; }
+.ve-ui .ve-vprev img { width: 100%; height: auto; display: block; }
