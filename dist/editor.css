@@ -903,7 +903,7 @@ html.ve-canvas-mobile::-webkit-scrollbar { display: none; }
 .ve-ui .ve-iprev.is-crop { cursor: crosshair; touch-action: none; }
 .ve-ui .ve-iprev.is-crop img { width: auto; height: auto; max-width: 100%; max-height: 100%; position: relative; }
 .ve-ui .ve-iprev .ve-focal { position: absolute; }
-.ve-ui .ve-bigbtn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 36px; border-radius: 18px; border: 1px solid var(--ve-accent); color: var(--ve-accent); font: 500 14px/1 var(--ve-font-stack); cursor: pointer; }
+.ve-ui .ve-bigbtn { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 8px; height: 36px; border-radius: 18px; border: 1px solid var(--ve-accent); color: var(--ve-accent); font: 500 14px/1 var(--ve-font-stack); cursor: pointer; }
 .ve-ui .ve-bigbtn:hover { background: #f1f5ff; }
 .ve-ui .ve-bigbtn svg { width: 16px; height: 16px; }
 .ve-ui .ve-info { display: inline-flex; vertical-align: middle; color: var(--ve-dim); }
@@ -1222,12 +1222,8 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 /* Editing levels: mode switcher, welcome chooser, basic floatbar labels, developer Code panel. */
 
 /* Switcher in the top bar: a coloured dot + level name, like Wix's site/role pills. */
-.ve-ui .ve-levelbtn { gap: 6px; margin-left: 2px; padding: 0 10px; border: 1px solid #dfe3ea; background: #fff; height: 30px; border-radius: 15px; font-weight: 600; font-size: 13px; }
-.ve-ui .ve-levelbtn:hover { background: #fff; border-color: #c4cad6; }
-.ve-ui .ve-level-dot { width: 8px; height: 8px; border-radius: 50%; background: #2fb36d; flex: none; }
-.ve-ui .ve-levelbtn[data-level="smart"] .ve-level-dot { background: var(--ve-accent); }
-.ve-ui .ve-levelbtn[data-level="developer"] .ve-level-dot { background: #7a3cf0; }
-
+.ve-ui .ve-levelbtn { gap: 6px; margin-left: 2px; }
+.ve-ui .ve-levelbtn > svg:first-child { width: 17px; height: 17px; color: var(--ve-dim); }
 .ve-ui .ve-pop-level { padding: 0; }
 .ve-ui .ve-levelpop { width: 320px; padding: 12px 8px 8px; }
 .ve-ui .ve-levelpop .ve-tpop-title { padding: 0 8px 8px; }
@@ -1248,17 +1244,19 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-welcome { width: min(940px, 100%); max-height: min(92vh, 640px); border-radius: 12px; padding: 0 24px 28px; overflow: auto; box-shadow: 0 8px 40px rgba(0, 6, 36, .3); }
 .ve-ui .ve-welcome[data-count="2"] { width: min(660px, 100%); }
 .ve-ui .ve-welcome-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0 4px; }
-.ve-ui .ve-welcome-head strong { font: 500 20px/28px var(--ve-font-display, var(--ve-font-stack)); color: #000; letter-spacing: 0; }
+.ve-ui .ve-welcome-head strong { font: 600 22px/30px var(--ve-font-display, var(--ve-font-stack)); color: #000; letter-spacing: 0; }
 .ve-ui .ve-welcome-x { width: 32px; height: 32px; flex: none; }
 .ve-ui .ve-welcome-x svg { width: 18px; height: 18px; }
-.ve-ui .ve-welcome-sub { margin: 0 0 22px; font-size: 14px; line-height: 20px; color: #5e6475; }
+.ve-ui .ve-welcome-sub { margin: 0 0 22px; font-size: 15px; line-height: 22px; color: #3b4150; }
 .ve-ui .ve-welcome-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .ve-ui .ve-wcard { display: flex; flex-direction: column; gap: 0; padding: 6px; border: 0; border-radius: 8px; background: #f4f4f4; text-align: left; cursor: pointer; box-shadow: inset 0 0 0 1px transparent; transition: box-shadow .12s; }
 .ve-ui .ve-wcard:hover, .ve-ui .ve-wcard:focus-visible { box-shadow: inset 0 0 0 2px var(--ve-accent); outline: none; }
 .ve-ui .ve-wcard-txt { display: flex; flex-direction: column; gap: 4px; padding: 12px 8px 8px; }
-.ve-ui .ve-wcard-title { display: flex; align-items: baseline; gap: 8px; font: 500 16px/22px var(--ve-font-display, var(--ve-font-stack)); color: #000; }
-.ve-ui .ve-wcard-level { font: 400 13px/18px var(--ve-font-stack); color: #868aa5; }
-.ve-ui .ve-wcard-desc { font-size: 13px; line-height: 18px; color: #5e6475; }
+.ve-ui .ve-wcard-title { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font: 600 17px/24px var(--ve-font-display, var(--ve-font-stack)); color: #000; }
+.ve-ui .ve-wcard-level { font: 500 12px/20px var(--ve-font-stack); color: #3b4150; background: #e6e8ec; border-radius: 10px; padding: 0 8px; }
+.ve-ui .ve-wcard-last { font: 500 12px/20px var(--ve-font-stack); color: var(--ve-accent); background: var(--ve-accent-soft); border-radius: 10px; padding: 0 8px; }
+.ve-ui .ve-wcard.is-last { box-shadow: inset 0 0 0 1px #c9d4ff; }
+.ve-ui .ve-wcard-desc { font-size: 14px; line-height: 20px; color: #3b4150; }
 
 /* Card previews: a sketched page on white. */
 .ve-ui .ve-wprev { position: relative; display: block; height: 176px; border-radius: 4px; background: #fff; overflow: hidden; box-shadow: 0 0 0 1px rgba(0, 0, 0, .04); }
@@ -1321,3 +1319,9 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 
 /* Basic level: the selection shows no Add Section button and no resize grips. */
 .ve-ui .ve-box-sel.is-basic .ve-addsec, .ve-ui .ve-box-sel.is-basic .ve-box-handles { display: none !important; }
+.ve-ui input.ve-tinput { cursor: text; text-overflow: ellipsis; }
+.ve-ui input.ve-tinput:focus { outline: none; border-color: var(--ve-accent); box-shadow: 0 0 0 3px var(--ve-accent-soft); }
+.ve-ui input.ve-tselect.ve-tinput { background: #fff none !important; padding-right: 12px; }
+.ve-ui .ve-sidecard[data-card="image-replace"] .ve-iprev { margin-bottom: 12px; }
+.ve-ui .ve-sidecard[data-card="image-replace"] .ve-bigbtn { margin-bottom: 14px; }
+.ve-ui .ve-sidecard[data-card="image-replace"] .ve-tlabel { display: block; margin-bottom: 6px; }
