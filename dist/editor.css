@@ -1134,6 +1134,16 @@ html.ve-editing [data-ve-editing]::selection, html.ve-editing [data-ve-editing] 
 .ve-ui .ve-floatbar .ve-fbtn { width: 28px; min-width: 28px; height: 28px; border-radius: 5px; }
 .ve-ui .ve-floatbar .ve-fbtn svg { width: 18px; height: 18px; }
 
+/* Interactive components opened by the editor (dom/interactive.js). View state only, never saved. */
+html.ve-editing [data-ve-open] { visibility: visible !important; opacity: 1 !important; clip: auto !important; clip-path: none !important; pointer-events: auto !important; }
+html.ve-editing [data-ve-open~="d"] { display: block !important; }
+html.ve-editing [data-ve-open~="li"] { display: list-item !important; }
+html.ve-editing [data-ve-open~="tr"] { display: table-row !important; }
+html.ve-editing [data-ve-open~="h"] { max-height: none !important; height: auto !important; overflow: visible !important; }
+html.ve-editing [data-ve-open="v"], html.ve-editing [data-ve-open^="v "] { max-height: none !important; }
+/* Moving parts (marquees, looping animations) holding the selection stand still while it is edited. */
+html.ve-editing [data-ve-paused], html.ve-editing [data-ve-paused] * { animation-play-state: paused !important; }
+
 /* Demo polish: tags never cover the content they label, roomier device switch. */
 .ve-ui .ve-box-hover.is-top:not(.is-tall) .ve-box-tag { top: auto; bottom: -20px; left: 0; }
 .ve-ui .ve-box-hover.is-notag .ve-box-tag { display: none; }
